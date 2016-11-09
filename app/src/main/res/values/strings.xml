@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">News App</string>
+    <string name="search_hint">Find articles on...</string>
+    <string name="search_button_text">Go!</string>
+    <string name="no_internet">No internet connection</string>
+    <string name="empty_text">No results</string>
+
+    <string name="title">Title:</string>
+    <string name="section">Section:</string>
+    <string name="date">Date:</string>
+
 </resources>
