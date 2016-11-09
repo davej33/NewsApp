@@ -63,6 +63,7 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
                 Article currentArticle = mAdapter.getItem(position);
 
                 Intent website = new Intent(Intent.ACTION_VIEW, Uri.parse(currentArticle.getmURL()));
+
                 startActivity(website);
             }
         });

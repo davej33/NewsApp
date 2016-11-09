@@ -28,13 +28,12 @@ public class QueryUtils {
         // convert url string to URL object
         URL url = createURL(urlString);
 
-        Log.e(LOG_TAG, "U_____R_____L : " + url);
+
         String jsonResponse = "";
 
         // run url and store results in string
         try {
             jsonResponse = makeHttpRequest(url);
-            Log.v(LOG_TAG, "fetchData-----json : " + jsonResponse);
         } catch (IOException e) {
             Log.e(LOG_TAG, "http request error", e);
         }
@@ -100,7 +99,7 @@ public class QueryUtils {
         List<Article> articleList = new ArrayList<>();
 
         if (data != null) {
-            Log.e(LOG_TAG, "D___A____T____A: " + data);
+
             try {
                 JSONObject root = new JSONObject(data);
                 JSONObject response = root.getJSONObject("response");
@@ -109,10 +108,10 @@ public class QueryUtils {
                 for (int i = 0; i < results.length(); i++) {
                     JSONObject element = results.getJSONObject(i);
 
-                    String title = "title";
-                    String section = "section";
-                    String date = "date";
-                    String url = "url";
+                    String title = "";
+                    String section = "";
+                    String date = "";
+                    String url = "";
 
                     try {
                         if (element.has("webTitle")) {
@@ -125,7 +124,7 @@ public class QueryUtils {
                         if (element.has("webPublicationDate")){
                         date = element.getString("webPublicationDate");}
 
-                        if (element.has("webURL")){
+                        if (element.has("webUrl")){
                         url = element.getString("webUrl");}
 
                     } catch (Error e) {
@@ -133,7 +132,7 @@ public class QueryUtils {
                     }
 
                     Article article = new Article(title, section, date, url);
-                    Log.e(LOG_TAG, "Article ##### #####" + article);
+
                     articleList.add(article);
                 }
 
