@@ -13,7 +13,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import static com.example.android.newsapp.ArticleList.LOG_TAG;
@@ -119,13 +122,22 @@ public class QueryUtils {
                         }
 
                         if (element.has("sectionName")) {
-                            section = element.getString("sectionName");}
+                            section = element.getString("sectionName");
+                        }
 
-                        if (element.has("webPublicationDate")){
-                        date = element.getString("webPublicationDate");}
+                        if (element.has("webPublicationDate")) {
+                            String dateString = element.getString("webPublicationDate");
+                            try {
+                                Date fDate = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'").parse(dateString);
+                                date = new SimpleDateFormat("MM/dd/yyyy").format(fDate);
+                            } catch (ParseException e){
+                                Log.e(LOG_TAG,"date parse error", e);
+                            }
+                        }
 
-                        if (element.has("webUrl")){
-                        url = element.getString("webUrl");}
+                        if (element.has("webUrl")) {
+                            url = element.getString("webUrl");
+                        }
 
                     } catch (Error e) {
                         Log.e(LOG_TAG, "error", e);
@@ -144,4 +156,5 @@ public class QueryUtils {
 
         return articleList;
     }
+
 }
