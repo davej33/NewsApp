@@ -9,11 +9,11 @@
         android:selectAllOnFocus="true"
         android:title="@string/settings_from_date"/>
 
-    <EditTextPreference
-        android:defaultValue="@string/settings_to_date_default"
-        android:key="@string/settings_to_date_key"
-        android:title="@string/settings_to_date"
-        android:inputType="date"
-        android:selectAllOnFocus="true"/>
+    <ListPreference
+        android:defaultValue="@string/settings_sort_default"
+        android:entries="@array/settings_sort_labels"
+        android:entryValues="@array/settings_sort_values"
+        android:key="@string/settings_sort_key"
+        android:title="@string/settings_sort"/>
 
 </PreferenceScreen>

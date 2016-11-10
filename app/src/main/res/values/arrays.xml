@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="settings_sort_labels">
+        <item>@string/settings_sort_relevance_label</item>
+        <item>@string/settings_sort_newest_label</item>
+        <item>@string/settings_sort_oldest_label</item>
+    </string-array>
+
+    <string-array name="settings_sort_values">
+        <item>@string/settings_sort_relevance_value</item>
+        <item>@string/settings_sort_newest_value</item>
+        <item>@string/settings_sort_oldest_value</item>
+    </string-array>
+
+</resources>

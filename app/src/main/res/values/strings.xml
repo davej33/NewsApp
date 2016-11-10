@@ -16,7 +16,17 @@
     <string name="settings_from_date_key" translatable="false">from-date</string>
     <string name="settings_from_date_default" translatable="false">1998-12-31</string>
 
-    <string name="settings_to_date">To Date</string>
-    <string name="settings_to_date_key" translatable="false">to-date</string>
-    <string name="settings_to_date_default" translatable="false"></string>
+    <string name="settings_sort">Sort by</string>
+    <string name="settings_sort_key">orderBy</string>
+    <string name="settings_sort_default">@string/settings_sort_relevance_value</string>
+
+    <string name="settings_sort_relevance_label">Relevance</string>
+    <string name="settings_sort_relevance_value">relevance</string>
+
+    <string name="settings_sort_newest_label">Newest</string>
+    <string name="settings_sort_newest_value">newest</string>
+
+    <string name="settings_sort_oldest_label">Oldest</string>
+    <string name="settings_sort_oldest_value">oldest</string>
+
 </resources>

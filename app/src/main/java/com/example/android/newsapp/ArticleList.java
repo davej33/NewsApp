@@ -85,21 +85,21 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
 
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
+
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
         String fromDate = sharedPrefs.getString(
                 getString(R.string.settings_from_date_key),
-                getString(R.string.settings_from_date_default)
-        );
-        String toDate = sharedPrefs.getString(
-                getString(R.string.settings_to_date_key),
-                getString(R.string.settings_to_date_default)
-        );
+                getString(R.string.settings_from_date_default));
+
+        String sort = sharedPrefs.getString(
+                getString(R.string.settings_sort_key),
+                getString(R.string.settings_sort_default));
+
         Uri baseURI = Uri.parse(mURL);
         Uri.Builder uriBuilder = baseURI.buildUpon();
 
-
         uriBuilder.appendQueryParameter("from-date", fromDate);
-        uriBuilder.appendQueryParameter("to-date", toDate);
+        uriBuilder.appendQueryParameter("order-by", sort);
         uriBuilder.appendQueryParameter("api-key", apiKey);
 
         Log.e(LOG_TAG, "UUUUUURRRRRRIIIIII ---- BASE : " + uriBuilder.toString());
