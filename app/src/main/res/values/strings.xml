@@ -12,7 +12,11 @@
     <string name="settings_title">Earthquake Settings</string>
     <string name="settings_menu_item">Settings</string>
 
-    <string name="settings_start_date">Start Date</string>
-    <string name="settings_min_magnitude_key" translatable="false">min_magnitude</string>
-    <string name="settings_min_magnitude_default" translatable="false">6</string>
+    <string name="settings_from_date">From Date</string>
+    <string name="settings_from_date_key" translatable="false">from-date</string>
+    <string name="settings_from_date_default" translatable="false">1998-12-31</string>
+
+    <string name="settings_to_date">To Date</string>
+    <string name="settings_to_date_key" translatable="false">to-date</string>
+    <string name="settings_to_date_default" translatable="false"></string>
 </resources>

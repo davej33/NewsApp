@@ -4,10 +4,12 @@ import android.app.LoaderManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.Loader;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -33,6 +35,7 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
     private ArticleAdapter mAdapter;
     private String mURL;
 
+    private static final String apiKey = "c2c3707e-b87e-430e-9b42-aac6641aa664";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,15 +43,14 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
         setContentView(R.layout.list_view);
 
         String uriBase = "http://content.guardianapis.com/search?q=";
-        String apiKey = "&api-key=c2c3707e-b87e-430e-9b42-aac6641aa664";
         String input = MainActivity.search_input.getText().toString();
         String encodedInput = "";
         try {
             encodedInput = URLEncoder.encode(input, "UTF-8");
-        } catch (UnsupportedEncodingException e){
+        } catch (UnsupportedEncodingException e) {
             Log.e(LOG_TAG, "encoding error", e);
         }
-        mURL = uriBase + encodedInput + apiKey;
+        mURL = uriBase + encodedInput;
 
         mProgBar = (ProgressBar) findViewById(R.id.progress_bar);
 
@@ -72,7 +74,7 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
 
         ConnectivityManager connMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-        if(networkInfo.isConnected()){
+        if (networkInfo.isConnected()) {
             LoaderManager loaderManager = getLoaderManager();
             loaderManager.initLoader(0, null, this);
             mProgBar.setVisibility(View.VISIBLE);
@@ -83,14 +85,32 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
 
     @Override
     public Loader<List<Article>> onCreateLoader(int id, Bundle args) {
-        return new QueryAsyncTaskLoader(this, mURL);
+        SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        String fromDate = sharedPrefs.getString(
+                getString(R.string.settings_from_date_key),
+                getString(R.string.settings_from_date_default)
+        );
+        String toDate = sharedPrefs.getString(
+                getString(R.string.settings_to_date_key),
+                getString(R.string.settings_to_date_default)
+        );
+        Uri baseURI = Uri.parse(mURL);
+        Uri.Builder uriBuilder = baseURI.buildUpon();
+
+
+        uriBuilder.appendQueryParameter("from-date", fromDate);
+        uriBuilder.appendQueryParameter("to-date", toDate);
+        uriBuilder.appendQueryParameter("api-key", apiKey);
+
+        Log.e(LOG_TAG, "UUUUUURRRRRRIIIIII ---- BASE : " + uriBuilder.toString());
+        return new QueryAsyncTaskLoader(this, uriBuilder.toString());
     }
 
     @Override
     public void onLoadFinished(Loader<List<Article>> loader, List<Article> data) {
         mProgBar.setVisibility(View.GONE);
         mAdapter.clear();
-        if(data != null && !data.isEmpty()){
+        if (data != null && !data.isEmpty()) {
             mAdapter.addAll(data);
         } else {
             mEmptyTextView.setText(R.string.empty_text);
@@ -111,7 +131,7 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
-        if(id == R.id.action_settings){
+        if (id == R.id.action_settings) {
             Intent settings = new Intent(this, SettingsActivity.class);
             startActivity(settings);
             return true;
