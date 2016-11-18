@@ -2,18 +2,53 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     android:title="@string/settings_title">
 
-    <EditTextPreference
-        android:defaultValue="@string/settings_from_date_default"
-        android:inputType="date"
-        android:key="@string/settings_from_date_key"
-        android:selectAllOnFocus="true"
-        android:title="@string/settings_from_date"/>
+    <com.packagename.DatePreference
+        android:defaultValue="2014-08-01"
+        android:key="keyname"
+        android:summary="Summary"
+        android:title="Title of the preference" />
+
 
     <ListPreference
         android:defaultValue="@string/settings_sort_default"
         android:entries="@array/settings_sort_labels"
         android:entryValues="@array/settings_sort_values"
         android:key="@string/settings_sort_key"
-        android:title="@string/settings_sort"/>
+        android:title="@string/settings_sort" />
 
 </PreferenceScreen>
+
+    <!-- <?xml version="1.0" encoding="utf-8"?>
+    <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+        android:title="@string/settings_title">
+            <EditTextPreference
+            android:id="@+id/etxt_fromdate"
+            android:defaultValue="@string/settings_from_date_default"
+            android:inputType="date"
+            android:key="@string/settings_from_date_key"
+            android:selectAllOnFocus="true"
+            android:title="@string/settings_from_date"/>
+
+        <EditTextPreference
+            android:id="@+id/etxt_todate"
+            android:defaultValue="@string/settings_from_date_default"
+            android:inputType="date"
+            android:key="@string/settings_from_date_key"
+            android:selectAllOnFocus="true"
+            android:title="@string/settings_from_date"/>
+
+        <EditTextPreference
+            android:defaultValue="@string/settings_from_date_default"
+            android:inputType="date"
+            android:key="@string/settings_from_date_key"
+            android:selectAllOnFocus="true"
+            android:title="@string/settings_from_date"/>
+
+        <ListPreference
+            android:defaultValue="@string/settings_sort_default"
+            android:entries="@array/settings_sort_labels"
+            android:entryValues="@array/settings_sort_values"
+            android:key="@string/settings_sort_key"
+            android:title="@string/settings_sort"/>
+
+    </PreferenceScreen> -->

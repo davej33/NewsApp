@@ -8,7 +8,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+public class Settings2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +35,8 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             });
 
-            Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
-            bindPreferenceSummaryToValue(fromDate);
+            //Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
+            //bindPreferenceSummaryToValue(fromDate);
 
             Preference sort = findPreference(getString(R.string.settings_sort_key));
             bindPreferenceSummaryToValue(sort);
