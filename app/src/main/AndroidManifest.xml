@@ -19,12 +19,21 @@
             </intent-filter>
         </activity>
         <activity android:name=".ArticleList" />
-        <activity android:name=".SettingsActivity"
+        <activity
+            android:name=".SettingsActivity"
             android:label="@string/settings_title">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity"/>
+                android:value=".MainActivity" />
         </activity>
-    </application>
+        <activity
+            android:name=".Settings2"
+            android:label="@string/settings_title">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity" />
+        </activity>
 
-</manifest>
+</application>
+
+    </manifest>

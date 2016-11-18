@@ -8,7 +8,7 @@ import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 
-public class SettingsActivity extends AppCompatActivity {
+public class Settings2 extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,18 +22,6 @@ public class SettingsActivity extends AppCompatActivity {
         public void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
-
-            final com.example.android.newsapp.DatePreference dp = (com.example.android.newsapp.DatePreference) findPreference("keyname");
-            dp.setText("2016-11-17");
-            dp.setSummary("2016-11-17");
-            dp.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
-                @Override
-                public boolean onPreferenceChange(Preference preference,Object newValue) {
-                    //your code to change values.
-                    dp.setSummary((String) newValue);
-                    return true;
-                }
-            });
 
             Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
             bindPreferenceSummaryToValue(fromDate);

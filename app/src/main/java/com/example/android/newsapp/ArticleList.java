@@ -102,7 +102,6 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
         uriBuilder.appendQueryParameter("order-by", sort);
         uriBuilder.appendQueryParameter("api-key", apiKey);
 
-        Log.e(LOG_TAG, "UUUUUURRRRRRIIIIII ---- BASE : " + uriBuilder.toString());
         return new QueryAsyncTaskLoader(this, uriBuilder.toString());
     }
 
@@ -132,7 +131,7 @@ public class ArticleList extends AppCompatActivity implements LoaderManager.Load
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent settings = new Intent(this, SettingsActivity.class);
+            Intent settings = new Intent(this, Settings2.class);
             startActivity(settings);
             return true;
         }
