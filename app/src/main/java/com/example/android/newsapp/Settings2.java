@@ -23,8 +23,20 @@ public class Settings2 extends AppCompatActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.settings_main);
 
-            Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
-            bindPreferenceSummaryToValue(fromDate);
+            final com.example.android.newsapp.DatePreference dp = (com.example.android.newsapp.DatePreference) findPreference("keyname");
+            dp.setText("2016-11-17");
+            dp.setSummary("2016-11-17");
+            dp.setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+                @Override
+                public boolean onPreferenceChange(Preference preference,Object newValue) {
+                    //your code to change values.
+                    dp.setSummary((String) newValue);
+                    return true;
+                }
+            });
+
+            //Preference fromDate = findPreference(getString(R.string.settings_from_date_key));
+            //bindPreferenceSummaryToValue(fromDate);
 
             Preference sort = findPreference(getString(R.string.settings_sort_key));
             bindPreferenceSummaryToValue(sort);

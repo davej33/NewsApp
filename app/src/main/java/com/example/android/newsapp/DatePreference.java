@@ -2,7 +2,6 @@ package com.example.android.newsapp;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.os.Build;
 import android.preference.DialogPreference;
 import android.util.AttributeSet;
 import android.view.View;
@@ -49,10 +48,10 @@ public class DatePreference extends DialogPreference {
     protected View onCreateDialogView() {
         picker = new DatePicker(getContext());
 
-        // setCalendarViewShown(false) attribute is only available from API level 11
+        /* setCalendarViewShown(false) attribute is only available from API level 11
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB) {
             picker.setCalendarViewShown(false);
-        }
+        }*/
 
         return (picker);
     }
